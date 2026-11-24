@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>E-Report Fasilitas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-tag">E-PRAS</span>
+      <span class="brand-sub">// Fasilitas</span>
+    </div>
+    <nav class="nav">
+      <a href="#report" class="nav-report">Laporan</a>
+      <a href="#dashboard" class="nav-dashboard">Dashboard <span class="nav-badge">04</span></a>
+    </nav>
+  </header>
+
+  <!-- Report -->
+  <main class="report-section" id="report">
+    <section class="report-intro">
+      <p class="eyebrow">// PELAPORAN KERUSAKAN</p>
+      <h1 class="headline">LAPOR <span class="headline-highlight">SEKARANG.</span></h1>
+      <p class="intro-text">Ada yang rusak di sekolah? Tulis di sini, nanti tim sarpras yang cek dan perbaiki.</p>
+    </section>
+
+    <form class="report-form" onsubmit="handelFormSubmit(event)">
+
+      <div class="form-field">
+        <label for="reporter" class="form-label">Nama pelapor</label>
+        <input type="text" id="reporter" name="reporter" class="form-input" placeholder="Nama lengkap" required>
+      </div>
+
+      <div class="form-field">
+        <label for="item" class="form-label">Benda yang rusak</label>
+        <select name="category" class="form-select" required>
+          <option value="">Pilih benda yang rusak</option>
+            <option value="Lampu">Lampu</option>
+            <option value="AC">AC</option>
+            <option value="TV">TV</option>
+            <option value="Kursi">Kursi</option>
+            <option value="Kabel">Kabel</option>
+            <option value="Pintu">Pintu</option>
+            <option value="Rak Buku">Rak Buku</option>
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label for="description" class="form-label">Deskripsi</label>
+        <textarea id="description" name="description" class="form-textarea" maxlength="200"
+          placeholder="Jelaskan detail kerusakan dan lokasinya..." required></textarea>
+        <p class="form-hint">Maksimal 200 karakter</p>
+      </div>
+
+      <button type="submit" class="submit-button">Kirim laporan <span class="submit-button-icon"></span></button>
+    </form>
+  </main>
+
+  <!-- Dashboard -->
+  <main class="dashboard-section" id="dashboard">
+    <p class="eyebrow">// OVERVIEW TIKET</p>
+    <h1 class="headline-dashboard">DASHBOARD</h1>
+
+    <section class="stats">
+      <article class="stat">
+        <h2 class="stat-label">Total laporan</h2>
+        <p class="stat-value">04</p>
+      </article>
+      <article class="stat stat-pending">
+        <h2 class="stat-label">Menunggu proses</h2>
+        <p class="stat-value">04</p>
+      </article>
+    </section>
+
+    <input type="radio" name="filter" id="filter-all" class="filter-radio" checked>
+    <input type="radio" name="filter" id="filter-waiting" class="filter-radio">
+    <input type="radio" name="filter" id="filter-done" class="filter-radio">
+
+    <fieldset class="filter-bar">
+      <legend>Filter laporan</legend>
+      <label for="filter-all" class="filter-button">Semua (4)</label>
+      <label for="filter-waiting" class="filter-button">Menunggu (4)</label>
+      <label for="filter-done" class="filter-button">Selesai (0)</label>
+    </fieldset>
+
+    <section class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Pelapor</th>
+            <th scope="col">Kategori</th>
+            <th scope="col">Deskripsi</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody id="reports-table-body">
+
+        </tbody>
+        </table>
+    </section>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+
+</html>
